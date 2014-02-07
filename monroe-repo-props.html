@@ -1,0 +1,37 @@
+<head>
+  <title>monroe-repo-props</title>
+</head>
+
+<body>
+  {{> fetch}}
+  {{> display}}
+</body>
+
+<template name="fetch">
+  <input id="fetchRepoList" type="button" value="Fetch Repo List" />
+  <input id="fetchSearchResults" type="button" value="Fetch Search Results" />
+  <div id="repoResult" style="display:none;"></div>
+  <div id="searchResult" style="display:none;"></div>
+  <iframe id="searchFrame" src="http://www.co.monroe.pa.us/tax%20assessment/Default.aspx"></iframe>
+</template>
+
+<template name="display">
+	<table>
+		<tr>
+			<th>Parcel</th>
+			<th>Owner</th>
+			<th>Legal</th>
+			<th>Pin</th>
+			<th>PID</th>
+		</tr>
+  {{#each properties}}
+  	<tr>
+	  	<td>{{parcel}}</td>
+	  	<td>{{billableOwner}}</td>
+	  	<td>{{legalDescription}}</td>
+	  	<td>{{pin}}</td>
+	  	<td>{{pid}}</td>
+	  </tr>
+  {{/each}}
+</table>
+</template>
