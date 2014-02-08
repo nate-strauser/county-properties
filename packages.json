@@ -1,4 +1,5 @@
 {
-  "jsdom": "0.10.0",
-  "zombie":"2.0.0-alpha27"
+  "node-phantom":"0.2.5",
+  "cheerio":"0.13.1",
+  "zombie":"1.4.1"
 }

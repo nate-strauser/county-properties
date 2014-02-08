@@ -1,5 +1,5 @@
 <head>
-  <title>monroe-repo-props</title>
+  <title>County Properties</title>
 </head>
 
 <body>
@@ -8,11 +8,8 @@
 </body>
 
 <template name="fetch">
-  <input id="fetchRepoList" type="button" value="Fetch Repo List" />
+  <input id="updateRepoList" type="button" value="Update Repo List" />
   <input id="fetchSearchResults" type="button" value="Fetch Search Results" />
-  <div id="repoResult" style="display:none;"></div>
-  <div id="searchResult" style="display:none;"></div>
-  <iframe id="searchFrame" src="http://www.co.monroe.pa.us/tax%20assessment/Default.aspx"></iframe>
 </template>
 
 <template name="display">
@@ -23,6 +20,13 @@
 			<th>Legal</th>
 			<th>Pin</th>
 			<th>PID</th>
+			<th>Location</th>
+			<th>Acerage</th>
+			<th>Land Use</th>
+			<th>Sale Date</th>
+			<th>Sale Ammount</th>
+			<th>Land Value</th>
+			<th>Building Value</th>
 		</tr>
   {{#each properties}}
   	<tr>
@@ -31,6 +35,12 @@
 	  	<td>{{legalDescription}}</td>
 	  	<td>{{pin}}</td>
 	  	<td>{{pid}}</td>
+	  	<td>{{location}}</td>
+	  	<td>{{acerage}}</td>
+	  	<td>{{landUse}}</td>
+	  	<td>{{saleDate}}</td>
+	  	<td>{{landValue}}</td>
+	  	<td>{{BuildingValue}}</td>
 	  </tr>
   {{/each}}
 </table>
