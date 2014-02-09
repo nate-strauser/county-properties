@@ -234,10 +234,10 @@ Meteor.startup(function () {
 									data.saleDate = $("#gvParcelSaleInformation td:nth-of-type(1)").text().trim();
 									data.saleAmount = $("#gvParcelSaleInformation td:nth-of-type(2)").text().trim();
 									data.homestead = $("#gvParcelSaleInformation td:nth-of-type(3)").text().trim();
-									data.landValue = parseInt($("#gvParcelSaleInformation td:nth-of-type(4)").text().trim(),10);
+									data.landValue = parseInt($("#gvParcelSaleInformation td:nth-of-type(4)").text().trim().replace(",",""),10);
 									if(isNaN(data.landValue))
 										delete data.landValue;
-									data.buildingValue = parseInt($("#gvParcelSaleInformation td:nth-of-type(5)").text().trim(),10);
+									data.buildingValue = parseInt($("#gvParcelSaleInformation td:nth-of-type(5)").text().trim().replace(",",""),10);
 									if(isNaN(data.buildingValue))
 										delete data.buildingValue;
 
