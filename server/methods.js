@@ -237,17 +237,34 @@ Meteor.startup(function () {
 									data.landValue = parseInt($("#gvParcelSaleInformation td:nth-of-type(4)").text().trim().replace(",",""),10);
 									if(isNaN(data.landValue))
 										delete data.landValue;
+									//console.log($("#gvParcelSaleInformation td:nth-of-type(5)").text().trim());
 									data.buildingValue = parseInt($("#gvParcelSaleInformation td:nth-of-type(5)").text().trim().replace(",",""),10);
 									if(isNaN(data.buildingValue))
 										delete data.buildingValue;
+									//console.log(data.buildingValue);
 
 									data = _.compactObject(data);
 
-									data.lastUpdatedTimestamp = (new Date()).getTime();
-									data.lastUpdated = (new moment()).format('M/D/YY h:mm A');
-									data.detailsLastUpdatedTimestamp = (new Date()).getTime();
-									data.detailsLastUpdated = (new moment()).format('M/D/YY h:mm A');
 
+
+
+									if(Object.keys(data).length > 0){
+
+										if(!data.buildingValue)
+											data.buildingValue = 0;
+										if(!data.landValue)
+											data.landValue = 0;
+
+										data.lastUpdatedTimestamp = (new Date()).getTime();
+										data.lastUpdated = (new moment()).format('M/D/YY h:mm A');
+										data.detailsLastUpdatedTimestamp = (new Date()).getTime();
+										data.detailsLastUpdated = (new moment()).format('M/D/YY h:mm A');
+									}else{
+										console.log('ERROR - unable to fetch details for pin ' + currentPin);
+										data.error = true;
+										data.errorMessage = "Unable to fetch details";
+									}
+									console.log(data);
 
 									fut.return(data);
 								},1000);
