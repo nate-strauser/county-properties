@@ -4,10 +4,10 @@
     "bootstrap-3": {},
     "sugarjs": {},
     "font-awesome": {},
-    "reactive-table": {},
+    "reactive-table": {
+      "git": "https://github.com/nate-strauser/reactive-table.git"
+    },
     "handlebar-helpers": {},
-    "momentjs": {
-      "git": "https://github.com/nate-strauser/meteor-momentjs.git"
-    }
+    "moment": {}
   }
 }

@@ -6,12 +6,12 @@
       "bootstrap-3": {},
       "sugarjs": {},
       "font-awesome": {},
-      "reactive-table": {},
-      "handlebar-helpers": {},
-      "momentjs": {
-        "git": "https://github.com/nate-strauser/meteor-momentjs.git",
+      "reactive-table": {
+        "git": "https://github.com/nate-strauser/reactive-table.git",
         "branch": "master"
-      }
+      },
+      "handlebar-helpers": {},
+      "moment": {}
     },
     "packages": {
       "npm": {
@@ -35,19 +35,19 @@
         "commit": "61e9361384347547ae144f8228faa4deffda23db"
       },
       "reactive-table": {
-        "git": "https://github.com/ecohealthalliance/reactive-table.git",
-        "tag": "v0.1.0",
-        "commit": "c75c7b6e3d73a09ccf0940dd2e06956f846ecdbe"
+        "git": "https://github.com/nate-strauser/reactive-table.git",
+        "branch": "master",
+        "commit": "2d974b342c58c08bc7f750b60fdd5a231ec0c4a7"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
         "tag": "v0.0.9",
         "commit": "71e94c99462b8801a34c5363510758b6ff5f5ac7"
       },
-      "momentjs": {
-        "git": "https://github.com/nate-strauser/meteor-momentjs.git",
-        "branch": "master",
-        "commit": "59eed341190cc953e1d03daa7cac162447ebcdee"
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
       }
     }
   }
