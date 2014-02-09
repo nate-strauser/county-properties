@@ -153,8 +153,7 @@ Meteor.startup(function () {
 			// 	}]
 			// })
 			Properties.find({
-				pin:{$ne:null},
-				detailsLastUpdatedTimestamp:null
+				pin:{$ne:null}
 			}).forEach(function(property){
 				var fut = new Future();
 				var currentPin = property.pin;
