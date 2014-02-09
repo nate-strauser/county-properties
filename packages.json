@@ -1,5 +1,4 @@
 {
   "node-phantom":"0.2.5",
-  "cheerio":"0.13.1",
-  "zombie":"1.4.1"
+  "cheerio":"0.13.1"
 }
