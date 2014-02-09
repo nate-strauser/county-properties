@@ -1,5 +1,13 @@
 {
   "packages": {
-    "npm": {}
+    "npm": {},
+    "bootstrap-3": {},
+    "sugarjs": {},
+    "font-awesome": {},
+    "reactive-table": {},
+    "handlebar-helpers": {},
+    "momentjs": {
+      "git": "https://github.com/nate-strauser/meteor-momentjs.git"
+    }
   }
 }

@@ -1,0 +1,15 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/nate/Documents/Projects/county-properties"
+		}
+	],
+	"settings":
+	{
+		"tabSize": 4,
+		"translateTabsToSpaces": false,
+		"trim_trailing_white_space_on_save": true,
+		"useTabStops": true
+	}
+}

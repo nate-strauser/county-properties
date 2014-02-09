@@ -1,0 +1,40 @@
+<head>
+  <title>County Properties</title>
+</head>
+
+<body>
+  {{> fetch}}
+  {{> display}}
+</body>
+
+<template name="fetch">
+	<div>
+	  {{#if propertyListNeedsUpdate}}
+		  <button id="updatePropertyList" type="button" class="btn btn-sm btn-primary" {{#if $.Session.equals 'updatingPropertyList' true}}disabled="disabled"{{/if}}>
+		  		 {{#if $.Session.equals 'updatingPropertyList' true}}
+		  		 	Loading...
+		  		 {{else}}
+		  		 	Update Property List
+		  		 {{/if}}
+		  </button>
+	  {{/if}}
+	  {{#if propertyDetailsNeedsUpdate}}
+		  <button id="updatePropertyDetails" type="button" class="btn btn-sm btn-info" {{#if $.Session.equals 'updatingPropertyDetails' true}}disabled="disabled"{{/if}}>
+		  		{{#if $.Session.equals 'updatingPropertyDetails' true}}
+		  		 	Loading...
+		  		 {{else}}
+		  		 	Update Property Details
+		  		 {{/if}}
+		  </button>
+	  {{/if}}
+	  Need details: {{propertiesNeedingDetailsCount}}
+	   -
+	  Total Properties: {{propertiesCount}}
+		<hr>
+	</div>
+</template>
+
+<template name="display">
+
+	{{reactiveTable properties settings}}
+</template>

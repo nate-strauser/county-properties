@@ -9,3 +9,9 @@ insecure
 preserve-inputs
 http
 npm
+bootstrap-3
+sugarjs
+font-awesome
+reactive-table
+handlebar-helpers
+momentjs
