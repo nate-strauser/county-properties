@@ -226,15 +226,21 @@ Meteor.startup(function () {
 									data.township = $("#gvSearchResultsRepeat td:nth-of-type(4)").text().trim();
 									data.location = $("#gvSearchResultsRepeat td:nth-of-type(5)").text().trim();
 
-									data.acerage = $("#gvParcelAddressDetail td:nth-of-type(2)").text().trim();
+									data.acerage = parseFloat($("#gvParcelAddressDetail td:nth-of-type(2)").text().trim());
+									if(isNaN(data.acerage))
+										delete data.acerage;
 									data.landUse = $("#gvParcelAddressDetail td:nth-of-type(4)").text().trim();
 									data.class = $("#gvParcelAddressDetail td:nth-of-type(5)").text().trim();
 
 									data.saleDate = $("#gvParcelSaleInformation td:nth-of-type(1)").text().trim();
 									data.saleAmount = $("#gvParcelSaleInformation td:nth-of-type(2)").text().trim();
 									data.homestead = $("#gvParcelSaleInformation td:nth-of-type(3)").text().trim();
-									data.landValue = $("#gvParcelSaleInformation td:nth-of-type(4)").text().trim();
-									data.buildingValue = $("#gvParcelSaleInformation td:nth-of-type(5)").text().trim();
+									data.landValue = parseInt($("#gvParcelSaleInformation td:nth-of-type(4)").text().trim(),10);
+									if(isNaN(data.landValue))
+										delete data.landValue;
+									data.buildingValue = parseInt($("#gvParcelSaleInformation td:nth-of-type(5)").text().trim(),10);
+									if(isNaN(data.buildingValue))
+										delete data.buildingValue;
 
 									data = _.compactObject(data);
 

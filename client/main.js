@@ -14,7 +14,7 @@ Template.display.helpers({
             { key: 'landUse', label: 'Land Use' },
             { key: 'landValue', label: 'Land Value' },
             { key: 'location', label: 'Location' },
-            { key: 'saleAmount', label: 'Sale Ammount' },
+            { key: 'saleAmount', label: 'Sale Amount' },
             { key: 'saleDate', label: 'Sale Date' }
         ] };
 
