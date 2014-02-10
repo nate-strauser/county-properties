@@ -12,9 +12,12 @@ Template.display.helpers({
             { key: 'pin', label: 'PIN' },
             { key: 'buildingValue', label: 'Building Value' },
             { key: 'acerage', label: 'Acerage' },
-            { key: 'landUse', label: 'Land Use' },
-            { key: 'landValue', label: 'Land Value' },
+            { key: 'township', label: 'Township' },
             { key: 'location', label: 'Location' },
+            { key: 'landUse', label: 'Land Use' },
+            { key: 'homestead', label: 'Homestead' },
+            { key: 'class', label: 'Class' },
+            { key: 'landValue', label: 'Land Value' },
             { key: 'saleAmount', label: 'Sale Amount' },
             { key: 'saleDate', label: 'Sale Date' }
         ] };
