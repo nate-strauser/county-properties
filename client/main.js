@@ -71,16 +71,13 @@ Template.fetch.helpers({
         }).count() > 0;
     },
     propertyDetailsNeedsUpdate: function () {
-        return Properties.find({}).count() > 0 &&
-        (
-            Properties.find({detailsLastUpdated:null}).count() > 0
+        return Properties.find({detailsLastUpdated:null}).count() > 0;
             //  ||
             // Properties.find({
             //     detailsLastUpdatedTimestamp:{
             //         $lte:moment().subtract('days', 1).toDate().getTime()
             //     }
             // }).count() > 0
-        );
     }
 });
 
