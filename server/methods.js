@@ -54,8 +54,11 @@ Meteor.startup(function () {
 
 	Meteor.methods({
 		updatePropertyList: function () {
-			var fut = new Future();
+			var fut = new Future(), fut2 = new Future();
 			var propertyData = {};
+
+			//repository
+
 			phantom.create(function(err,ph) {
 				return ph.createPage(function(err,page) {
 					var testindex = 0, loadInProgress = false;
@@ -109,6 +112,87 @@ Meteor.startup(function () {
 				var cells = $(this).find("td");
 				var data = {};
 
+				data.saleType = 'repository';
+				data.parcel = $(cells[0]).text().trim();
+				data.billableOwner = $(cells[1]).text().trim();
+				data.legalDescription = $(cells[2]).text().trim();
+				data.pin = $(cells[3]).text().trim();
+
+				data.lastUpdatedTimestamp = (new Date()).getTime();
+				data.lastUpdated = (new moment()).format('M/D/YY h:mm A');;
+				data.lastSeenTimestamp = (new Date()).getTime();
+				data.lastSeen = (new moment()).format('M/D/YY h:mm A');;
+
+				data = _.compactObject(data);
+
+				var existingProperty = Properties.findOne({"pin":data.pin});
+				if(existingProperty){
+					console.log('found prop, updating');
+					Properties.update({"_id":existingProperty._id},{$set: data});
+				}else{
+					if(data.pin){
+						console.log('found new prop, inserting');
+						Properties.insert(data);
+					}
+				}
+			});
+
+			//judicial
+
+			phantom.create(function(err,ph) {
+				return ph.createPage(function(err,page) {
+					var testindex = 0, loadInProgress = false;
+
+					page.onAlert = function(msg) {
+						propertyData = msg;
+					};
+
+					page.onConsoleMessage = phantomHelpers.onConsoleMessage;
+					page.onLoadStarted = phantomHelpers.onLoadStarted;
+					page.onLoadFinished = phantomHelpers.onLoadFinished;
+					page.onError = phantomHelpers.onError;
+
+					var steps = [
+						function() {
+							page.open("http://www.co.monroe.pa.us/tax%20claim/judicial.aspx");
+						},
+						function() {
+							page.evaluate(function() {
+								alert(document.querySelectorAll('html')[0].outerHTML);
+							});
+						}
+					];
+
+					var interval;
+					interval = setInterval(function() {
+						if (!loadInProgress && typeof steps[testindex] == "function") {
+							console.log("step " + (testindex + 1));
+							steps[testindex]();
+							testindex++;
+						}
+						if (typeof steps[testindex] != "function") {
+							console.log("complete!");
+							clearInterval(interval);
+							ph.exit();
+
+							setTimeout(function(){
+								fut2.return(propertyData);
+							},1000);
+						}
+					}, 5000);
+				});
+			});
+
+			result = fut2.wait();
+
+			//console.log(result);
+
+			$ = cheerio.load(result);
+			$("#GridView1 tr").each(function() {
+				var cells = $(this).find("td");
+				var data = {};
+
+				data.saleType = 'judicial';
 				data.parcel = $(cells[0]).text().trim();
 				data.billableOwner = $(cells[1]).text().trim();
 				data.legalDescription = $(cells[2]).text().trim();

@@ -4,6 +4,7 @@ Template.display.helpers({
     },
     settings: function () {
         return { fields: [
+            { key: 'saleType', label: 'Sale Type'},
             { key: 'lastUpdated', label: 'Last Updated'},
             { key: 'billableOwner', label: 'Owner' },
             { key: 'legalDescription', label: 'Legal Description' },
