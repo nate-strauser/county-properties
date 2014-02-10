@@ -8,6 +8,7 @@
       "git": "https://github.com/nate-strauser/reactive-table.git"
     },
     "handlebar-helpers": {},
-    "moment": {}
+    "moment": {},
+    "isolate-value": {}
   }
 }

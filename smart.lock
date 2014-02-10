@@ -11,7 +11,8 @@
         "branch": "master"
       },
       "handlebar-helpers": {},
-      "moment": {}
+      "moment": {},
+      "isolate-value": {}
     },
     "packages": {
       "npm": {
@@ -37,7 +38,7 @@
       "reactive-table": {
         "git": "https://github.com/nate-strauser/reactive-table.git",
         "branch": "master",
-        "commit": "2d974b342c58c08bc7f750b60fdd5a231ec0c4a7"
+        "commit": "51406b6a95d36f1aea9133af77dfa6d37ca5cfb2"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
@@ -48,6 +49,11 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.5.1",
         "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
+      "isolate-value": {
+        "git": "https://github.com/awwx/meteor-isolate-value.git",
+        "tag": "v2.0.2",
+        "commit": "6b8600b29190073fa3785b48b028f113edfdffc2"
       }
     }
   }

@@ -152,9 +152,7 @@ Meteor.startup(function () {
 			// 		"detailsLastUpdatedTimestamp":{$lte:moment().subtract('days', 1).toDate().getTime()}
 			// 	}]
 			// })
-			Properties.find({
-				pin:{$ne:null}
-			}).forEach(function(property){
+			Properties.find({pin:{$ne:null},detailsLastUpdated:null},{sort:{detailsLastUpdatedTimestamp:1}}).forEach(function(property){
 				var fut = new Future();
 				var currentPin = property.pin;
 				var propertyData = {};
@@ -221,6 +219,7 @@ Meteor.startup(function () {
 									//process results
 									$ = cheerio.load(propertyData);
 
+
 									var data = {};
 									data.township = $("#gvSearchResultsRepeat td:nth-of-type(4)").text().trim();
 									data.location = $("#gvSearchResultsRepeat td:nth-of-type(5)").text().trim();
@@ -255,17 +254,24 @@ Meteor.startup(function () {
 										if(!data.landValue)
 											data.landValue = 0;
 
+										data.sourceDetailsData = {
+											version:1,
+											htmlFragments:[
+												$("#gvSearchResultsRepeat").html(), //todo - rework to object and include selector
+												$("#gvParcelAddressDetail").html(),
+												$("#gvParcelSaleInformation").html()
+											]
+										};
+
 										data.lastUpdatedTimestamp = (new Date()).getTime();
 										data.lastUpdated = (new moment()).format('M/D/YY h:mm A');
-										data.detailsLastUpdatedTimestamp = (new Date()).getTime();
-										data.detailsLastUpdated = (new moment()).format('M/D/YY h:mm A');
+
 									}else{
 										console.log('ERROR - unable to fetch details for pin ' + currentPin);
 										data.error = true;
 										data.errorMessage = "Unable to fetch details";
+										data.errorOccured = (new Date()).getTime();
 									}
-									console.log(data);
-
 									fut.return(data);
 								},1000);
 							}
@@ -273,6 +279,11 @@ Meteor.startup(function () {
 					});
 				});
 				var result = fut.wait();
+				result.detailsLastUpdatedTimestamp = (new Date()).getTime();
+				result.detailsLastUpdated = (new moment()).format('M/D/YY h:mm A');
+
+				console.log(result);
+
 				Properties.update({"pin":currentPin},{$set: result});
         	});
 			return;

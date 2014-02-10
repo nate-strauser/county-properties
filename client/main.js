@@ -69,12 +69,13 @@ Template.fetch.helpers({
     propertyDetailsNeedsUpdate: function () {
         return Properties.find({}).count() > 0 &&
         (
-            Properties.find({detailsLastUpdated:null}).count() > 0 ||
-            Properties.find({
-                detailsLastUpdatedTimestamp:{
-                    $lte:moment().subtract('days', 1).toDate().getTime()
-                }
-            }).count() > 0
+            Properties.find({detailsLastUpdated:null}).count() > 0
+            //  ||
+            // Properties.find({
+            //     detailsLastUpdatedTimestamp:{
+            //         $lte:moment().subtract('days', 1).toDate().getTime()
+            //     }
+            // }).count() > 0
         );
     }
 });
